@@ -1,0 +1,48 @@
+POST http://localhost:3000/users
+Content-Type: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "matoram+test6@gmail.com",
+  "password": "hello123",
+  "firstName": "Matej",
+  "lastName": "Lenarcic"
+}
+
+###
+
+GET http://localhost:3000/users/6bbb6a8c-80e6-43ee-b108-2b8d03b6cb7c
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+POST http://localhost:3000/users/login
+Content-Type: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "matoram+test6@gmail.com",
+  "password": "hello123"
+}
+
+
+###
+
+POST http://localhost:3000/articles
+Content-Type: application/json
+Content-Length: 90
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "title": "A story",
+  "summary": "Some summary",
+  "content": "Some content"
+}

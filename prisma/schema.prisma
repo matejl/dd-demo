@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model article {
+  id         String   @id(map: "article_pk") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamp(6)
+  user_id    String?  @db.Uuid
+  title      String?
+  summary    String?
+  content    String?
+  user       user?    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "article_user_id_fk")
+}
+
+model user {
+  id         String    @id(map: "user_pk") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email      String?   @unique(map: "user_email_uindex")
+  first_name String?
+  last_name  String?
+  password   String?
+  article    article[]
+}
